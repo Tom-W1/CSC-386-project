@@ -11,7 +11,6 @@ big_brain = reddit.subreddit('Futurology')
 bb_plays = big_brain.hot(limit=1)
 
 
-
 def get_submission():
     brain = []
     for i in bb_plays:
