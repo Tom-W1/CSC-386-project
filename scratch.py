@@ -8,9 +8,10 @@ reddit = praw.Reddit(client_id='h75002hxSddmJA',
                      username='Krost303',
                      password='Freedom303!!')
 
-def save_title_submission():
-    """saves the title of the first thousand post of the depression reddit sorted by top for manipulation
 
+def save_title_submission():
+    """
+    saves the title of the first thousand post of the depression reddit sorted by top for manipulation
     : return: df
     """
     red_depress = reddit.subreddit('depression').top(limit=1000)
@@ -23,9 +24,10 @@ def save_title_submission():
     df.to_csv('post_title_text.csv')
     return df
 
-def save_auth_submission():
-    """saves the authors of the first thousand post of the depression reddit sorted by top for manipulation
 
+def save_auth_submission():
+    """
+    saves the authors of the first thousand post of the depression reddit sorted by top for manipulation
     : return: df
     """
     red_depress = reddit.subreddit('depression').top(limit=1000)
@@ -38,9 +40,10 @@ def save_auth_submission():
     df.to_csv('post_author.csv')
     return df
 
-def save_body_submission():
-    """saves the body of the first thousand post of the depression reddit sorted by top for manipulation
 
+def save_body_submission():
+    """
+    saves the body of the first thousand post of the depression reddit sorted by top for manipulation
     : return: df
     """
     red_depress = reddit.subreddit('depression').top(limit=1000)
@@ -52,6 +55,7 @@ def save_body_submission():
     df = pd.DataFrame(depression_dict_body)
     df.to_csv('post_body_text.csv')
     return df
+
 
 def save_submissions():
     """
@@ -104,6 +108,7 @@ def main():
     save_body_submission()
     save_auth_submission()
     save_title_submission()
+
 
 if __name__ == '__main__':
      main()
