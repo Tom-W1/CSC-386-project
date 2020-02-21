@@ -4,6 +4,8 @@ import pandas as pd
 import datetime as dt
 from nltk.corpus import stopwords
 import matplotlib
+import matplotlib.pyplot as plt
+
 
 stop_words = stopwords.words('english')
 reddit = praw.Reddit(client_id='h75002hxSddmJA',
@@ -115,7 +117,7 @@ def analyze_user_to_upvotes():
         print("this user had this many post: " + str(num_of_post))
 
 
-def anaylze_word_frequency():
+def anaylze_word_frequency_body():
     sample_data = pd.read_csv(r"C:\Users\westth\PycharmProjects\CSC-386-project\post_body_text.csv")
     depression_dictionary = {}
     for submission_text in sample_data["body"]:
@@ -127,9 +129,42 @@ def anaylze_word_frequency():
     depression_words = list(depression_dictionary.items())
     depression_words.sort(key = lambda x:x [1])
     depression_words.reverse()
-
     print (depression_words)
+    return depression_words
 
+
+def anaylze_word_frequency_title():
+    sample_data = pd.read_csv(r"C:\Users\westth\PycharmProjects\CSC-386-project\post_title_text.csv")
+    depression_dictionary = {}
+    for submission_text in sample_data["title"]:
+        submission_text = str(submission_text)
+        for word in submission_text.split(" " or '\n' or '.' or '!' or '?' or "," or ";"):
+            if word not in stop_words and word != " ":
+                depression_dictionary [word] = depression_dictionary.get(word, 0)+1
+
+    depression_words = list(depression_dictionary.items())
+    depression_words.sort(key = lambda x:x [1])
+    depression_words.reverse()
+    print (depression_words)
+    return depression_words
+
+def graph_word_frequencey ():
+    word_freq = anaylze_word_frequency_body()
+    words = []
+    freq = []
+    for words_in_body in word_freq:
+       words.append( words_in_body [0])
+    for freq_of_word in word_freq:
+        freq.append(freq_of_word[1])
+    print(freq)
+    print(words)
+    plt.figure(0)
+    plt.xlabel("words")  # Label the X axis
+    plt.ylabel("Score")  # Label the Y axis
+    plt.title("frequency of words")  # Set the plot’s title
+    # sample_data["score"] is a list of scores
+    plt.scatter(words[:10],freq[:10])
+    plt.show()
 
 def main():
     #save_submissions()
@@ -138,7 +173,9 @@ def main():
     #save_title_submission()
     #save_score_submission()
     #analyze_user_to_upvotes()
-    anaylze_word_frequency()
+    #anaylze_word_frequency_body()
+    #anaylze_word_frequency_title()
+    graph_word_frequencey()
 if __name__ == '__main__':
      main()
 
