@@ -10,6 +10,10 @@
           <option name="url" value="https://github.com/Tom-W1/CSC-386-project.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/Nudgarrobot/steamscraperMod.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="C:\Users\rober\PycharmProjects" />
